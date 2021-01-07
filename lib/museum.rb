@@ -5,4 +5,8 @@ class Museum
     @name = name
     @exhibits = []
   end
+
+  def add_exhibit(exibit)
+    @exhibits.push(exibit)
+  end
 end
