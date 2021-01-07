@@ -20,4 +20,19 @@ class Museum
   def admit(patron)
     @patrons.push(patron)
   end
+
+  def list_of_intrested_patrons(exhibit)
+    @patrons.find_all do |patron|
+      patron.interests.any?(exhibit.name)
+    end
+  end
+
+
+  def patrons_by_exhibit_interest
+    patrons_by_exhibit = {}
+    @exhibits.each do |exhibit|
+      patrons_by_exhibit[exhibit] = list_of_intrested_patrons(exhibit)
+    end
+    patrons_by_exhibit
+  end
 end
