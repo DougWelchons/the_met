@@ -6,7 +6,13 @@ class Museum
     @exhibits = []
   end
 
-  def add_exhibit(exibit)
-    @exhibits.push(exibit)
+  def add_exhibit(exhibit)
+    @exhibits.push(exhibit)
+  end
+
+  def recommend_exhibits(patron)
+    @exhibits.find_all do |exhibit|
+      patron.interests.any?(exhibit.name)
+    end
   end
 end
